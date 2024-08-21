@@ -1,7 +1,8 @@
-package services;
+package domain;
 
 import org.springframework.stereotype.Service;
-import repository.ProductRepository;
+
+import java.util.List;
 
 @Service
 public class ProductService {
@@ -11,17 +12,15 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getAllProducts() {
+    public List<ProductDTO> getAllProducts() {
         return productRepository.findAll();
     }
 
-    public Product getProductById(Long id) {
+    public <Product> Product getProductById(Long id) {
         return productRepository.findById(id);
     }
 
-    public Product saveProduct(Product product) {
+    public ProductDTO saveProduct(ProductDTO product) {
         return productRepository.save(product);
     }
-
 }
-
